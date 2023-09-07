@@ -1,0 +1,33 @@
+#node no VSCode
+
+Write on the terminal 
+
+- npm init -y
+
+npm - significa Node Package Manager
+init - palavra chave para criar um novo projeto
+-y - é para passar como padrão todos os valores
+
+Vai ser criado um arquivo package.json automaticamente
+
+Adicione em package.json em scripts:
+
+- "start" : "node app.js"
+
+Agora no terminal rode:
+
+- npm run start
+
+
+baixar express esalvar os modulos
+
+- npm install express --save
+
+
+instalando nodemon e salvando globalmente
+
+- npm install nodemon -g
+
+Adicione em package.json em scripts:
+
+- "start" : "nodemon app.js"
