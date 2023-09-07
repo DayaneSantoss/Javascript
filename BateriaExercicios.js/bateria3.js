@@ -63,7 +63,7 @@ function y () {
   Use o operador abreviado para fazer a reatribuição.
   */
   
-  const divideContador = () => cont /= 4
+  const divideContador = (num) => num /= 4
   
   console.log(divideContador())
   /*
@@ -93,14 +93,6 @@ function y () {
     console.log(decrementaContador())
   
   /*
-  07
-  
-  Execute a função multiplicaContador.
-  */
-  
-  
-  
-  /*
   08
   
   Crie uma função pegaSetenta que retorna um objeto com uma 
@@ -118,33 +110,11 @@ function y () {
   da propriedade numero é maior ou igual a contador.
   */
   
-  
-  
-  /*
-  10
-  
-  Divida o contador por quatro usando a função que você criou.
-  */
-  
-  
+  console.log(pegaSetenta().numero >=  cont )
+
   
   /*
-  11
-  
-  Incremente o contador em um usando a função que você criou.
-  */
-  
-  
-  
-  /*
-  12
-  
-  Decremente o contador em um usando a função que você criou.
-  */
-  
-  
-  
-  /*
+ 
   13
   
   Crie uma função pegaNumeros que exporta os números 34, 
@@ -155,11 +125,15 @@ function y () {
   Use uma estrutura de lista.
   */
   
-  
-  
+  const pegaNumeros = () => {
+    return [34,95,70]
+  }
+  console.log(pegaNumeros())
   /*
   14
   
   Use o retorno da função pegaNumeros para comparar se o valor 
   do terceiro número do array é diferente de contador.
   */
+
+ console.log(pegaNumeros()[2] !== cont)
