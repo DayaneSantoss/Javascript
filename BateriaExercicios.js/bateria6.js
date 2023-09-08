@@ -25,9 +25,9 @@ invocação da função eUndefined.
 const eUndefined = arg => arg === undefined
 
 const somar = (arg1, arg2, arg3) => {
-  const temSoArg1 = arg1 !== undefined && eUndefined(arg2) && eUndefined(arg3)
-  const temSoArg1E2 = arg1 !== undefined && arg2 !== undefined && eUndefined(arg3)
-  const temTodosArgs = arg1 !== undefined && arg2 !== undefined && arg3 !== undefined
+  const temSoArg1 =  !eUndefined(arg1) && eUndefined(arg2) && eUndefined(arg3)
+  const temSoArg1E2 =  !eUndefined(arg1) && !eUndefined(arg2) && eUndefined(arg3)
+  const temTodosArgs =  !eUndefined(arg1) && !eUndefined(arg2) &&  !eUndefined(arg3)
   const temNenhumArg = eUndefined(arg1) && eUndefined(arg2) && eUndefined(arg3)
 
   if (temSoArg1) {
@@ -49,11 +49,11 @@ const somar = (arg1, arg2, arg3) => {
   return null
 }
 
-somar(1)
-somar(1, 2)
-somar(1, 2, 3)
-somar()
-somar(undefined, 1, 2)
+console.log(somar(1))
+console.log(somar(1, 2))
+console.log(somar(1, 2, 3))
+console.log(somar())
+console.log(somar(undefined, 1, 2))
 
 /*
 02
@@ -80,6 +80,20 @@ const concursos = [
   { id: 'd8sduqsd3', nome: 'Concurso Supermercado Galão' },
   { id: 'd687jsfke', nome: 'Concurso Programadores Garotos de Programa' },
 ]
+console.log(concursos.id)
+
+const pegaNomeConcurso = id => {
+   let nomeConcurso = ''
+
+   for (let i = 0; i < concursos.length; i++){
+        if (id === concursos[i].id){
+            nomeConcurso += concursos[i].nome
+        }
+   }
+   return nomeConcurso || "Concurso não encontrado"
+}
+console.log(pegaNomeConcurso('ysdyhsa8a'))
+
 
 /*
 03
@@ -88,15 +102,11 @@ Refatore a função abaixo para apenas uma única linha.
 */
 
 const eAMelhorSerie = serie => {
-  if (serie === 'Breaking Bad') {
-    return '✅ Sim'
-  }
-  
-  return '❌ Não'
+  return serie === 'Breaking Bad' ? '✅ Sim' : '❌ Não'
 }
 
-eAMelhorSerie('Breaking Bad')
-eAMelhorSerie('Game of Thrones')
+console.log(eAMelhorSerie('Breaking Bad'))
+console.log(eAMelhorSerie('Game of Thrones'))
 
 /*
 04
@@ -116,14 +126,24 @@ Dica:
 Para obter a média, basta dividir a soma total dos custos 
 pela quantidade de meses.
 */
+const pegaMediaCustos = custos => {
+    let soma = 0
+
+    for (let i = 0; i < custos.length; i++){
+       soma += custos[i].custoTotal
+    }
+    return soma / custos.length
+}
 
 const custos = [
-  { mes: 'janeiro', custoTotal: 5672 },
-  { mes: 'fevereiro', custoTotal: 2357 },
-  { mes: 'março', custoTotal: 5347 },
-  { mes: 'abril', custoTotal: 6325 },
-  { mes: 'maio', custoTotal: 6748 },
+    { mes: 'janeiro', custoTotal: 5672 },
+    { mes: 'fevereiro', custoTotal: 2357 },
+    { mes: 'março', custoTotal: 5347 },
+    { mes: 'abril', custoTotal: 6325 },
+    { mes: 'maio', custoTotal: 6748 },
 ]
+
+console.log(`A média dos custo é ${pegaMediaCustos(custos)}`)
 
 /*
 05
@@ -138,6 +158,18 @@ Teste a função utilizando o array abaixo.
 */
 
 const palavras = ['ovo', 'áudio', 'oi', 'telefones', 'ovni']
+
+const pegaArray = arr =>{
+    palavrasComTres = []
+
+    for (let i = 0; i < arr.length; i++){
+        if (arr[i].length > 3){
+            palavrasComTres.push(arr[i])
+        }
+    }
+    return palavrasComTres
+}
+console.log(pegaArray(palavras))
 
 /*
 06
@@ -161,8 +193,8 @@ const dobrar = numeros => {
 
   for (let i = 0; i < numeros.length; i++) {
     numerosDobrados.push(numeros[i] * 2)
-    return numerosDobrados
-  }
+}
+return numerosDobrados
 }
 
-// console.log(dobrar([1, 2, 3]))
+console.log(dobrar([1, 2, 3]))
