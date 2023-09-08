@@ -29,7 +29,7 @@ const objs = [
     { x: 7, y: 8 }
   ]
   
-  objs[4].x
+  objs[3].x
   
   /*
   02
@@ -42,17 +42,17 @@ const objs = [
   Após consertar, a expressão deve retornar o caractere w.
   */
   
-  const obj = {
-    x: () => 'y',
-    y: function () { 
-      'w'
-    },
-    w () { 
-      return 'x'
-    }
-  }
+//   const obj = {
+//     x: () => 'y',
+//     y: function () { 
+//       return 'w'
+//     },
+//     w: () =>{ 
+//       return 'x'
+//     }
+//   }
   
-  obj.z()
+//   console.log(obj.y())
   
   /*
   03
@@ -66,6 +66,25 @@ const objs = [
   Faça com que uma das invocações retorne true.
   */
   
+//   const eNull = arg => arg === null 
+
+//   console.log(eNull())
+//   console.log(eNull(null))
+//   console.log(eNull({}))
+
+
+const arr = [1,2,null,54,null]
+const ax = []
+
+  const testNull = arg => {
+    arg.forEach(ar => ax.push(`${ar}: ${ar === null}`));
+  }
+
+  testNull(arr)
+  console.log(ax)
+
+
+
   /*
   04
   
@@ -82,6 +101,16 @@ const objs = [
   argumentos.
   */
   
+const multiplicacao = (a,b,c) => 
+  {
+    if(a === undefined || b === undefined || c === undefined){
+    return "Insira todos os argumentos"
+  }
+  return multiplica
+}
+
+  console.log(multiplicacao())
+
   /*
   05
   
@@ -100,15 +129,11 @@ const objs = [
   */
   
   const y = w => {
-    if (w[2] === false) {
-      if ('b' === w[0]) {
-        if (w[1] === 3) {
-          // console.log('Executou if!')
+    if (w[2] === false && 'b' === w[0] && w[1] === 3) {
+          console.log('Executou if!')
         }
       }
-    }
-  }
-  
+    
   const a = 'b'
   const b = false
   const c = 3
@@ -121,23 +146,50 @@ const objs = [
   Crie uma função com as seguintes características:
   
   1. A função deve receber 3 argumentos.
-  
   2. Se somente um argumento for passado, retorne o valor do 
   argumento.
-  
   3. Se dois argumentos forem passados, retorne a soma dos 
   dois argumentos.
-  
   4. Se todos os argumentos forem passados, retorne a soma do 
   primeiro com o terceiro.
-  
   5. Se nenhum argumento for passado, retorne o valor booleano 
   false.
-  
   6. E ainda, se nenhuma das condições acima forem atendidas, 
   retorne null.
   */
-  
+
+
+  const isUndefined = arg => arg === undefined
+
+  const arg = (a , b , c)=> {
+    const somenteUmArg = a !== undefined && isUndefined(b) && isUndefined(c)
+    const somenteDoisArgs = a !== undefined && b !== undefined && isUndefined(c)
+    const temTodosArgs = a !== undefined && b !== undefined && c !== undefined
+    const temNenhumArg = isUndefined(a) && isUndefined(b) && isUndefined(c)
+    
+    if (somenteUmArg){
+        return a 
+    }
+    if(somenteDoisArgs){
+        return a + b
+    } 
+    if (temTodosArgs){
+        return a + c
+    }
+    if (temNenhumArg){
+        return false
+}
+return null
+}
+
+  console.log(arg(1))
+  console.log(arg(1,4))
+  console.log(arg(1,3,6))
+  console.log(arg())
+
+
+
+
   /*
   07
   
