@@ -80,19 +80,17 @@ const concursos = [
   { id: 'd8sduqsd3', nome: 'Concurso Supermercado Galão' },
   { id: 'd687jsfke', nome: 'Concurso Programadores Garotos de Programa' },
 ]
-console.log(concursos.id)
 
 const pegaNomeConcurso = id => {
-   let nomeConcurso = ''
 
    for (let i = 0; i < concursos.length; i++){
         if (id === concursos[i].id){
-            nomeConcurso += concursos[i].nome
+            return concursos[i].nome
         }
    }
-   return nomeConcurso || "Concurso não encontrado"
+   return "Concurso não encontrado"
 }
-console.log(pegaNomeConcurso('ysdyhsa8a'))
+console.log(pegaNomeConcurso('ysdysa8a'))
 
 
 /*

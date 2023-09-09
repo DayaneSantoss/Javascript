@@ -18,13 +18,13 @@ palavra "certo" ao invés de "serto".
 A função deve retornar a string 'Tá certo?'.
 */
 
-const consertaPalavra = str => {
-    str[3] = 'c'
-    return str
-  }
+const consertaPalavra = str => str.replace('serto', 'certo')
   
-  // console.log(consertaPalavra('Tá serto?'))
   
+console.log(consertaPalavra('Tá serto?'))
+  
+
+
   /* 
   02
   
