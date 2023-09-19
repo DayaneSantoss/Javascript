@@ -3,6 +3,16 @@ Se o exercício contém dicas nas últimas linhas, leia as
 dicas (após a linha "Dicas:") apenas se precisar. 
 */
 
+// replace não modifica string original, pois string é um tipo primitivo. tipos primitivos são imutaveis
+
+const mensagem = 'Oi Seu pai é um cavalo'
+
+// mensagem.replace('cavalo', 'boi')   X
+
+const novaMensagem = mensagem.replace('cavalo', 'boi')
+
+console.log(novaMensagem)
+
 /*
 01
 
@@ -18,13 +28,12 @@ palavra "certo" ao invés de "serto".
 A função deve retornar a string 'Tá certo?'.
 */
 
+
+
 const consertaPalavra = str => str.replace('serto', 'certo')
-  
   
 console.log(consertaPalavra('Tá serto?'))
   
-
-
   /* 
   02
   
@@ -35,19 +44,17 @@ console.log(consertaPalavra('Tá serto?'))
   */
   
   const eUndefined = arg => arg === undefined
+
+
   
-  const multiplicar = (a, b, c) => {
-    if (eUndefined(a) || eUndefined(b) || eUndefined(c)) {
-      return 'Insira todos os argumentos!'
-    }
+  const multiplicar = (a, b, c) => [a,b,c]
+    .includes(undefined) ? 'Insira todos os argumentos!' : a * b * c
   
-    return a * b * c
-  }
   
-  multiplicar()
-  multiplicar(1)
-  multiplicar(1, 2)
-  multiplicar(1, 2, 3)
+console.log(multiplicar())
+console.log(multiplicar(1))
+console.log(multiplicar(1, 2))
+console.log(multiplicar(1, 2, 3))
   
   /*
   03
@@ -71,7 +78,7 @@ console.log(consertaPalavra('Tá serto?'))
     const temSoArg1 = !eUndefined(arg1) && eUndefined(arg2) && eUndefined(arg3)
     const temSoArg1E2 = !eUndefined(arg1) && !eUndefined(arg2) && eUndefined(arg3)
     const temTodosArgs = !eUndefined(arg1) && !eUndefined(arg2) && !eUndefined(arg3)
-    const temNenhumArg = eUndefined(arg1) && eUndefined(arg2) && eUndefined(arg3)
+    const temNenhumArg = [arg1, arg2, arg3].every(eUndefined)
   
     if (temSoArg1) {
       return arg1
@@ -92,11 +99,11 @@ console.log(consertaPalavra('Tá serto?'))
     return null
   }
   
-  // console.log('somar(1):', somar(1))
-  // console.log('somar(1, 2):', somar(1, 2))
-  // console.log('somar(1, 2, 3):', somar(1, 2, 3))
-  // console.log('somar():', somar())
-  // console.log('somar(undefined, 1, 2):', somar(undefined, 1, 2))
+  console.log('somar(1):', somar(1))
+  console.log('somar(1, 2):', somar(1, 2))
+  console.log('somar(1, 2, 3):', somar(1, 2, 3))
+  console.log('somar():', somar())
+  console.log('somar(undefined, 1, 2):', somar(undefined, 1, 2))
   
   /*
   04
@@ -114,15 +121,12 @@ console.log(consertaPalavra('Tá serto?'))
   
   const dobrar = numeros => {
     const numerosDobrados = []
-  
-    for (let i = 0; i < numeros.length; i++) {
-      numerosDobrados.push(numeros[i] * 2)
-    }
-  
+    numeros.forEach(numero => numerosDobrados.push(numero * 2)) 
+    
     return numerosDobrados
   }
   
-  dobrar([1, 2, 3])
+  console.log(dobrar([1, 2, 3]))
   
   /* 
   05
@@ -140,22 +144,11 @@ console.log(consertaPalavra('Tá serto?'))
   
   const versaoOficial = 7
   
-  const saoMesmaVersao = obj => {
-    let mesmaVersao = true
+  const saoMesmaVersao = obj => obj.versoes.every(arr => arr[0] === versaoOficial)
   
-    obj.versoes.forEach(arrVersao => {
-      const versao = arrVersao[0]
   
-      if (versao !== versaoOficial) {
-        mesmaVersao = false
-      }
-    })
-  
-    return mesmaVersao
-  }
-  
-  saoMesmaVersao({ versoes: [[7], [8], [9]]})
-  saoMesmaVersao({ versoes: [[7], [7], [7]]})
+  console.log(saoMesmaVersao({ versoes: [[7], [8], [9]]}))
+  console.log(saoMesmaVersao({ versoes: [[7], [7], [7]]}))
   
   /*
   06
@@ -181,6 +174,9 @@ console.log(consertaPalavra('Tá serto?'))
     ...perigo.git.arquivosDeletados,
     ...perigo.git.arquivosModificados
   ]
+
+  const jsArquivos = arquivos.every(ar => ar.includes('js'))
+  console.log(jsArquivos)
   
   /*
   07
@@ -198,6 +194,12 @@ console.log(consertaPalavra('Tá serto?'))
   const bandasAnos60 = ['Pink Floyd', 'Deep Purple', 'Black Sabbath', 'Led Zeppelin']
   const bandasAnos70 = ['Queen', 'Eagles', 'Aerosmith', 'AC/DC', 'Journey', 'Kiss']
   
+
+const juntar = (a,b) => [...a, ...b]
+
+console.log(juntar(bandasAnos60, bandasAnos70))
+
+
   /*
   08
   
@@ -212,17 +214,22 @@ console.log(consertaPalavra('Tá serto?'))
   propriedades do objeto original (id e nome). 
   */
   
-  const mudaNomeProduto = produto => {
-    produto.nome += ' - PlayStation 5'
-    return produto
-  }
-  
-  const produtos = [
-    { id: 'fd-f9g', nome: 'Marvel\'s Spider-Man 2' },
-    { id: 'wd7ye-fs', nome: 'Fire TV Stick | Streaming em Full HD com Alexa' },
-    { id: 'f4h-d8if-3', nome: 'Controle Dualsense - Midnight Black' },
-    { id: 'p8fi-sf', nome: 'Echo Pop Smart speaker' },
-    { id: 'g79f-8qs', nome: 'Clamper Energia 5 Tomadas' }
+ 
+ 
+ const mudaNomeProduto = produto => {
+  return {...produto, nome: produto.nome + " - playstation"}
+ }
+
+
+ const produtos = [
+   { id: 'fd-f9g', nome: 'Marvel\'s Spider-Man 2' },
+   { id: 'wd7ye-fs', nome: 'Fire TV Stick | Streaming em Full HD com Alexa' },
+   { id: 'f4h-d8if-3', nome: 'Controle Dualsense - Midnight Black' },
+   { id: 'p8fi-sf', nome: 'Echo Pop Smart speaker' },
+   { id: 'g79f-8qs', nome: 'Clamper Energia 5 Tomadas' }
   ]
   
-  const novoProduto = mudaNomeProduto(produtos[0])
+
+
+  const novoProduto = mudaNomeProduto(produtos[1])
+  console.log(novoProduto)
